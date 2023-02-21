@@ -11,10 +11,38 @@ myPen.color("#DB148E")
 myPen.width(5)
 myPen.left(90)
 
+"""
+-----.-----
+-.........-
+--.-----.--
+-.........-
+-----.-----
+
+"""
+
+
+
 #Start of maze
 myPen.forward(70)
+
 myPen.right(90)
-myPen.forward(90)
+myPen.forward(120)
+
+myPen.left(90)
+myPen.forward(60)
+
+myPen.left(90)
+myPen.forward(120)
+
+myPen.right(90)
+
+
+
+#Width from (0,0) = 300
+#Height from Start to Finish = 400
+#Height of one box = 130
+#Height to first line = 70
+
 input()
 
 
