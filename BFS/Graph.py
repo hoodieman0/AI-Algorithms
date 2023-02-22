@@ -28,11 +28,12 @@ Connect Graph
 Movement operations
 """
 # Constructs the proper dictionary given a list of nodes
-    # Note: the nodes must be connected using ConnectOneWay()
-def DictConstructor(nodeList: list):
-        graphDict = {}
-        for node in nodeList:
-            graphDict[node] = {}
+# Note: the nodes must be connected using ConnectOneWay()
+def DictConstructor(nodeList: list) -> dict:
+    graphDict = {}
+    for node in nodeList:
+        graphDict[node] = {}
+    return graphDict
 
 class Graph:
     isDirected = False
@@ -45,8 +46,8 @@ class Graph:
     def __init__(self, graphDict: dict, isDirected: bool) -> None:
         self.isDirected = isDirected
         self.graphDict = graphDict
-        if not self.isDirected:
-            self.MakeUndirected()
+        #if not self.isDirected:
+            #self.MakeUndirected()
 
     # In graphDict, sets the value of key the node1 to a tuple (node2, distance)
     # node1 and node2 must be in the graphDict
