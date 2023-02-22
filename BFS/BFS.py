@@ -3,10 +3,8 @@ from abc import ABC, abstractmethod
 
 # Breadth First Search Base Class
 class BFS(ABC):
-    def __init__(self, graph, start, goal) -> None:
+    def __init__(self, graph: dict) -> None:
         self.graph = graph
-        self.start = start
-        self.goal = goal
     
     @abstractmethod
     def SearchGraph():
@@ -14,12 +12,12 @@ class BFS(ABC):
 
 # BFS using (x, y) coordinate system
 class CoordinateBFS(BFS):
-    def SearchGraph(self):
+    def SearchGraph(self, start: tuple, goal: tuple):
         queue = []
         visited = []
 
-        queue.append(self.start)
-        visited.append(self.start)
+        queue.append(start)
+        visited.append(start)
         i = 1
         print(str(i) + ". Frontier: " + str(queue))
         i = i + 1
@@ -27,9 +25,8 @@ class CoordinateBFS(BFS):
         while queue:
             node = queue.pop(0)
             print("\n@("+ str(node[0])+", " + str(node[1]) + ")")
-            #visited.append(node)
 
-            if node == self.goal:
+            if node == goal:
                 print("Hey! I reached the goal!")
                 return True
             
@@ -47,52 +44,50 @@ class CoordinateBFS(BFS):
 
 
 
+def MazeStringToList(string: str) -> list:
+    mazeList = []
+    temp = []
+    for c in maze:
+        if c == '\n':
+            mazeList.append(temp)
+            temp = []
+            continue
+        temp.append(c)
+
+    return mazeList
+
+def MakeValidNodes(mazeList: list) -> list:
+    newNodes = []
+    for idxY, lst in enumerate(mazeList):
+        for idxX, char in enumerate(lst):
+            if char == ".":
+                newNodes.append((idxX+1, idxY+1))
+    
+    return newNodes
+
+def ConnectAdjacentNodes(graph: dict) -> dict:    
+    for key in graph.keys():
+        if (key[0] - 1, key[1]) in graph:
+            graph[key][key[0] - 1, key[1]] = 1
+        if (key[0] + 1, key[1]) in graph:
+            graph[key][key[0] + 1, key[1]] = 1
+        if (key[0], key[1] - 1) in graph:
+            graph[key][key[0], key[1] - 1] = 1
+        if (key[0], key[1] + 1) in graph:
+            graph[key][key[0], key[1] + 1] = 1
+
+    return graph
 
 maze = "-----.-----\n-.........-\n--.-----.--\n-.........-\n-----.-----\n-----.-----\n"
-file = open("output.txt", "w")
-
-
-
-mazeList = []
-temp = []
-for c in maze:
-    if c == '\n':
-        mazeList.append(temp)
-        temp = []
-        continue
-    temp.append(c)
-
-#print(mazeList)
-#file.write(str(mazeList))
-
-newNodes = []
-for idxY, lst in enumerate(mazeList):
-    for idxX, char in enumerate(lst):
-        if char == ".":
-            newNodes.append((idxX+1, idxY+1))
-            # WHY NOT JUST MAKE THIS A DICT
-
-#print(newNodes)
-
-graph = DictConstructor(newNodes)
-for key in graph.keys():
-    if (key[0] - 1, key[1]) in graph:
-        graph[key][key[0] - 1, key[1]] = 1
-    if (key[0] + 1, key[1]) in graph:
-        graph[key][key[0] + 1, key[1]] = 1
-    if (key[0], key[1] - 1) in graph:
-        graph[key][key[0], key[1] - 1] = 1
-    if (key[0], key[1] + 1) in graph:
-        graph[key][key[0], key[1] + 1] = 1
-
-#print(graph)
-
+mazeList = MazeStringToList(maze)
+nodeList = MakeValidNodes(mazeList)
+graph = ConnectAdjacentNodes(DictConstructor(nodeList))
 
 myGraph = Graph(graph, False)
-print(CoordinateBFS(myGraph.GetGraph(), (6,1), (6,6)))
-file.close()
 
+search = CoordinateBFS(myGraph.GetGraph())
 
+print(search.SearchGraph((6,1), (6,6)))
 
 
 
