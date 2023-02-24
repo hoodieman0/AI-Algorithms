@@ -1,32 +1,19 @@
-from abc import ABC, abstractmethod #Abstract Base Class
+from abc import ABC #Abstract Base Class
 
 # Helper class to streamline node creation
 class Node(ABC):
     node: any = None
 
-    @abstractmethod
-    def GetNode(self):
-        pass
-
-
-
-# Helper class to streamline coordinate node creation
-class CoordinateNode(Node):
-    def __init__(self, xPos: int, yPos: int) -> None:
-        self.node = (xPos, yPos)
-    
     def GetNode(self):
         return self.node
 
+
+# Helper class to streamline COORDINATE node creation
+class CoordinateNode(Node):
+    def __init__(self, xPos: int, yPos: int) -> None:
+        self.node = (xPos, yPos)
+
         
-"""
-Graph is a dict of coordinates. The values are the distances between the nodes
-Functions:
-Get Graph
-string to Graph
-Connect Graph
-Movement operations
-"""
 # Constructs the proper dictionary given a list of nodes
 # Note: the nodes must be connected using ConnectOneWay()
 def DictConstructor(nodeList: list) -> dict:
@@ -35,14 +22,14 @@ def DictConstructor(nodeList: list) -> dict:
         graphDict[node] = {}
     return graphDict
 
+
 class Graph:
     isDirected = False
 
     # This dict must follow the format dict{node: dict{connectedNode: distanceInt}}
-    # The current use case has nodes as a tuple: (xInt, yInt)
     graphDict = {}
 
-    # The input graphDict can be a properly formatted dict or empty dict
+    # The input graphDict can be a properly formatted dict
     def __init__(self, graphDict: dict, isDirected: bool) -> None:
         self.isDirected = isDirected
         self.graphDict = graphDict
