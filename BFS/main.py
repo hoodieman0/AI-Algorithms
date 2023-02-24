@@ -1,7 +1,11 @@
 #Turtle Maze Challenge - www.101computing.net/turtle-maze/
 import turtle
 import maze
+from BFS import DictConstructor, GetMazeFromFile, MazeStringTo2DList, MakeValidNodes, ConnectAdjacentNodes
+from DrawBFS import DrawCoordinateBFS
+from Graph import Graph
 
+# Drawing the maze
 myPen=turtle.Turtle()
 myPen.penup()
 myPen.goto(20,-180)
@@ -11,37 +15,23 @@ myPen.color("#DB148E")
 myPen.width(5)
 myPen.left(90)
 
-"""
------.-----
--.........-
---.-----.--
--.........-
------.-----
 
-"""
+#Start of maze movement
 
+filename = "maze.txt"
+start = (19,1)
+end = (19,41)
 
+mazeList = GetMazeFromFile(filename)
 
-#Start of maze
-myPen.forward(70)
+coordList = MakeValidNodes(mazeList)
+graph = ConnectAdjacentNodes(DictConstructor(coordList))
+myGraph = Graph(graph, False)
 
-myPen.right(90)
-myPen.forward(120)
+search = DrawCoordinateBFS(myGraph.GetGraph())
+print(search.GetPath(start, end))
+search.Draw(start, end, myPen)
 
-myPen.left(90)
-myPen.forward(60)
-
-myPen.left(90)
-myPen.forward(120)
-
-myPen.right(90)
-
-
-
-#Width from (0,0) = 300
-#Height from Start to Finish = 400
-#Height of one box = 130
-#Height to first line = 70
 
 input()
 
