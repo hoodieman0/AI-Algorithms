@@ -44,7 +44,7 @@ class CoordinateBFS(BFS):
 
 
 
-def MazeStringToList(string: str) -> list:
+def MazeStringToList(maze: str) -> list:
     mazeList = []
     temp = []
     for c in maze:
@@ -54,6 +54,7 @@ def MazeStringToList(string: str) -> list:
             continue
         temp.append(c)
 
+    mazeList.reverse()
     return mazeList
 
 def MakeValidNodes(mazeList: list) -> list:
@@ -77,17 +78,3 @@ def ConnectAdjacentNodes(graph: dict) -> dict:
             graph[key][key[0], key[1] + 1] = 1
 
     return graph
-
-maze = "-----.-----\n-.........-\n--.-----.--\n-.........-\n-----.-----\n-----.-----\n"
-mazeList = MazeStringToList(maze)
-nodeList = MakeValidNodes(mazeList)
-graph = ConnectAdjacentNodes(DictConstructor(nodeList))
-
-myGraph = Graph(graph, False)
-
-search = CoordinateBFS(myGraph.GetGraph())
-
-print(search.SearchGraph((6,1), (6,6)))
-
-
-
