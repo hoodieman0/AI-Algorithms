@@ -23,6 +23,7 @@ def DictConstructor(nodeList: list) -> dict:
     return graphDict
 
 
+# Takes a string that represents a maze and returns a 2D list of chars
 def MazeStringTo2DList(maze: str) -> list:
     mazeList = []
     temp = []
@@ -36,6 +37,8 @@ def MazeStringTo2DList(maze: str) -> list:
     mazeList.reverse()
     return mazeList
 
+
+# Opens a file and returns a 2D list of chars that represents the maze
 def GetMazeFromFile(filename: str) -> list:
     with open(filename) as file:
         content = file.readlines()
@@ -53,7 +56,9 @@ def GetMazeFromFile(filename: str) -> list:
     return mazeList
 
 
-def MakeValidNodes(mazeList: list) -> list:
+# Takes a 2D list of a maze and assigns valid nodes to tuples of the format (x, y)
+# Should be paired with the function MazeStringTo2DList() or GetMazeFromFile()
+# All period('.') characters are considered valid nodes
 def MakeCoordinateNodes(mazeList: list) -> list:
     newNodes = []
     for idxY, lst in enumerate(mazeList):
@@ -63,6 +68,10 @@ def MakeCoordinateNodes(mazeList: list) -> list:
     
     return newNodes
 
+
+# Takes in a dictionary and looks for nodes in the adjacent x and y coordinates
+# This function reformats the graph to form connections that may or may not exist
+# Should only be paired with the function MakeCoordinateNodes() or similar coordinate plane graphs
 def ConnectAdjacentNodes(graph: dict) -> dict:    
     for key in graph.keys():
         if (key[0] - 1, key[1]) in graph:
@@ -87,6 +96,7 @@ class Graph:
     def __init__(self, graphDict: dict, isDirected: bool) -> None:
         self.isDirected = isDirected
         self.graphDict = graphDict
+        # Not necessary due to helper functions, but could be useful
         #if not self.isDirected:
             #self.MakeUndirected()
 
