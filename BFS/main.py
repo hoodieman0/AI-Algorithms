@@ -1,9 +1,8 @@
 #Turtle Maze Challenge - www.101computing.net/turtle-maze/
 import turtle
 import maze
-from BFS import DictConstructor, GetMazeFromFile, MazeStringTo2DList, MakeValidNodes, ConnectAdjacentNodes
 from DrawBFS import DrawCoordinateBFS
-from Graph import Graph
+from Graph import Graph, DictConstructor, GetMazeFromFile, MakeValidNodes, ConnectAdjacentNodes
 
 # Drawing the maze
 myPen=turtle.Turtle()

@@ -23,6 +23,59 @@ def DictConstructor(nodeList: list) -> dict:
     return graphDict
 
 
+def MazeStringTo2DList(maze: str) -> list:
+    mazeList = []
+    temp = []
+    for c in maze:
+        if c == '\n':
+            mazeList.append(temp)
+            temp = []
+            continue
+        temp.append(c)
+
+    mazeList.reverse()
+    return mazeList
+
+def GetMazeFromFile(filename: str) -> list:
+    with open(filename) as file:
+        content = file.readlines()
+    mazeList = []
+    temp = []
+    for string in content:
+        for c in string:
+            if c == '\n':
+                mazeList.append(temp)
+                temp = []
+                continue
+            temp.append(c)
+
+    mazeList.reverse()
+    return mazeList
+
+
+def MakeValidNodes(mazeList: list) -> list:
+    newNodes = []
+    for idxY, lst in enumerate(mazeList):
+        for idxX, char in enumerate(lst):
+            if char == ".":
+                newNodes.append((idxX+1, idxY+1))
+    
+    return newNodes
+
+def ConnectAdjacentNodes(graph: dict) -> dict:    
+    for key in graph.keys():
+        if (key[0] - 1, key[1]) in graph:
+            graph[key][key[0] - 1, key[1]] = 1
+        if (key[0] + 1, key[1]) in graph:
+            graph[key][key[0] + 1, key[1]] = 1
+        if (key[0], key[1] - 1) in graph:
+            graph[key][key[0], key[1] - 1] = 1
+        if (key[0], key[1] + 1) in graph:
+            graph[key][key[0], key[1] + 1] = 1
+
+    return graph
+
+
 class Graph:
     isDirected = False
 
