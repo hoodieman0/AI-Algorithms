@@ -15,6 +15,8 @@ class BFS(ABC):
 class CoordinateBFS(BFS):
 
     # This is the BFS algorithm with guiding print statements
+    # Returns true if BFS found a path
+    # Returns false if there is not path from start to goal
     def SearchGraph(self, start: tuple, goal: tuple):
         queue = []
         visited = []
