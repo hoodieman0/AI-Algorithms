@@ -63,23 +63,21 @@ class DrawCoordinateBFS(CoordinateBFS):
 
             if y > 0:
                 change = Direction["NORTH"]
-                print("NORTH")
+                print("MOVING NORTH")
             elif y < 0:
                 change = Direction["SOUTH"]
-                print("SOUTH")
+                print("MOVING SOUTH")
             elif x > 0:
                 change = Direction["EAST"]
-                print("EAST")
+                print("MOVING EAST")
             elif x < 0:
                 change = Direction["WEST"]
-                print("WEST")
+                print("MOVING WEST")
             else:
-                print("INVALID NODES")
+                print("INVALID NODES -> Movement() : DrawBFS.py")
                 return
 
-
             z = change - facing
-            print(str(change) + " - " + str(facing) + " = " + str(z))
             while not z == 0:
                 if z > 2:
                     z = 0
@@ -93,7 +91,6 @@ class DrawCoordinateBFS(CoordinateBFS):
                 elif z < 0:
                     Left(pen)
                     z = z + 1
-                print(z)
             
             Forward(pen)
             print("\n-------------------------")
@@ -107,5 +104,7 @@ class DrawCoordinateBFS(CoordinateBFS):
         for move in pathList[1:]:
             facing = Movement(prev, move, facing)
             prev = move
+        
+        print("Finished Path!")
     
 
