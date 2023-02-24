@@ -44,7 +44,7 @@ class CoordinateBFS(BFS):
 
 
 
-def MazeStringToList(maze: str) -> list:
+def MazeStringTo2DList(maze: str) -> list:
     mazeList = []
     temp = []
     for c in maze:
@@ -56,6 +56,23 @@ def MazeStringToList(maze: str) -> list:
 
     mazeList.reverse()
     return mazeList
+
+def GetMazeFromFile(filename: str) -> list:
+    with open(filename) as file:
+        content = file.readlines()
+    mazeList = []
+    temp = []
+    for string in content:
+        for c in string:
+            if c == '\n':
+                mazeList.append(temp)
+                temp = []
+                continue
+            temp.append(c)
+
+    mazeList.reverse()
+    return mazeList
+
 
 def MakeValidNodes(mazeList: list) -> list:
     newNodes = []

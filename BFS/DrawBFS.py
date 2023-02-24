@@ -1,4 +1,4 @@
-from BFS import CoordinateBFS, DictConstructor, MazeStringToList, MakeValidNodes, ConnectAdjacentNodes
+from BFS import CoordinateBFS
 from turtle import Turtle
 
 moveDistance = 10
@@ -105,6 +105,6 @@ class DrawCoordinateBFS(CoordinateBFS):
             facing = Movement(prev, move, facing)
             prev = move
         
-        print("Finished Path!")
+        print("Finished Drawing Path!")
     
 
