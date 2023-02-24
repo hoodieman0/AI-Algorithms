@@ -134,5 +134,3 @@ class DrawCoordinateBFS(CoordinateBFS):
             prev = move
         
         print("Finished Drawing Path!")
-    
-

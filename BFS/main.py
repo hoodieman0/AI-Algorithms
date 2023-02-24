@@ -14,8 +14,8 @@ myPen.color("#DB148E")
 myPen.width(5)
 myPen.left(90)
 
-
-#Start of maze movement
+# ==========================================================
+# Start of maze movement
 
 filename = "maze.txt"
 start = (19,1)
