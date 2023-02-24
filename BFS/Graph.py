@@ -54,6 +54,7 @@ def GetMazeFromFile(filename: str) -> list:
 
 
 def MakeValidNodes(mazeList: list) -> list:
+def MakeCoordinateNodes(mazeList: list) -> list:
     newNodes = []
     for idxY, lst in enumerate(mazeList):
         for idxX, char in enumerate(lst):

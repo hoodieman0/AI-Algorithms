@@ -2,7 +2,7 @@
 import turtle
 import maze
 from DrawBFS import DrawCoordinateBFS
-from Graph import Graph, DictConstructor, GetMazeFromFile, MakeValidNodes, ConnectAdjacentNodes
+from Graph import Graph, DictConstructor, GetMazeFromFile, MakeCoordinateNodes, ConnectAdjacentNodes
 
 # Drawing the maze
 myPen=turtle.Turtle()
@@ -23,7 +23,7 @@ end = (19,41)
 
 mazeList = GetMazeFromFile(filename)
 
-coordList = MakeValidNodes(mazeList)
+coordList = MakeCoordinateNodes(mazeList)
 graph = ConnectAdjacentNodes(DictConstructor(coordList))
 myGraph = Graph(graph, False)
 
