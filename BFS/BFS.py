@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 
 # Breadth First Search Base Class
+# Helper class to define needed functions for BFS classes
 class BFS(ABC):
     def __init__(self, graph: dict) -> None:
         self.graph = graph
@@ -10,7 +11,10 @@ class BFS(ABC):
         pass
 
 # BFS using (x, y) coordinate system
+# The data type should be a tuple with two ints (x, y)
 class CoordinateBFS(BFS):
+
+    # This is the BFS algorithm with guiding print statements
     def SearchGraph(self, start: tuple, goal: tuple):
         queue = []
         visited = []
@@ -40,7 +44,3 @@ class CoordinateBFS(BFS):
             i = i + 1
         
         return False
-
-
-
-
