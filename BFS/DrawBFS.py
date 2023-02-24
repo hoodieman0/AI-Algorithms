@@ -1,6 +1,7 @@
-from BFS import CoordinateBFS, MazeStringToList, MakeValidNodes, ConnectAdjacentNodes
-from Graph import Graph, DictConstructor
+from BFS import CoordinateBFS, DictConstructor, MazeStringToList, MakeValidNodes, ConnectAdjacentNodes
 from turtle import Turtle
+
+moveDistance = 10
 
 # {current node : previous node}
 class DrawCoordinateBFS(CoordinateBFS):
@@ -18,7 +19,6 @@ class DrawCoordinateBFS(CoordinateBFS):
             node = queue.pop(0)
 
             if node == goal:
-                print("Hey! I reached the goal!")
                 return True
             
             for key in self.graph[node].keys():
@@ -33,45 +33,74 @@ class DrawCoordinateBFS(CoordinateBFS):
     def GetPath(self, start: tuple, goal: tuple) -> list:
         self.SearchForPath(start, goal)
         sequentialPath = []
+        sequentialPath.append(goal)
         node = self.path[goal]
-        while not node is (-1, -1):
-            sequentialPath.insert(0, node)
+        while node != (-1, -1):
+            sequentialPath.append(node)
             node = self.path[node]
+        sequentialPath.reverse()
         return sequentialPath
+
 
     # Assume facing forward into the maze
     def Draw(self, start: tuple, goal: tuple, pen: Turtle):
-        l = self.GetPath(start, goal)
+        
+        Direction = {"NORTH":1, "EAST":2, "SOUTH":3, "WEST":4}
 
-        facing = "N"
+        def Forward(pen: Turtle):
+            pen.forward(moveDistance)
+        
+        def Right(pen: Turtle):
+            pen.right(90)
+        
+        def Left(pen: Turtle):
+            pen.left(90)
+        
+        def Movement(node: tuple, next: tuple, facing: int):
+            x = next[0] - node[0] 
+            y = next[1]- node[1] 
+            print(str(node) + " -> " + str(next))
+            print(str(x) + " or " + str(y))
 
-        prev = l[0]
-        need = "N"
-        for move in l:
-            a = 1
-            # Move Forward
+            if y > 0:
+                change = Direction["NORTH"]
+                print("NORTH")
+            elif y < 0:
+                change = Direction["SOUTH"]
+                print("SOUTH")
+            elif x > 0:
+                change = Direction["EAST"]
+                print("EAST")
+            elif x < 0:
+                change = Direction["WEST"]
+                print("WEST")
+            else:
+                print("INVALID NODES")
+                return
 
-            # Move Right
-                #Facing east?
-                #Facing west?
-            # Move Left
 
-        print(l)
+            z = facing - change
+            print(str(change) + " - " + str(facing) + " = " + str(z))
+            while not z == 0:
+                if z > 0:
+                    Right(pen)
+                    z = z - 1
+                if z < 0:
+                    Left(pen)
+                    z = z + 1
+                print(z)
+            
+            Forward(pen)
+            print("\n-------------------------")
+            return change
 
-        return
+        pathList = self.GetPath(start, goal)
+        
+        facing = Direction["NORTH"]
+
+        prev = pathList[0]
+        for move in pathList[1:]:
+            facing = Movement(prev, move, facing)
+            prev = move
     
 
-maze = "-----.-----\n-.........-\n--.-----.--\n-.........-\n-----.-----\n-----.-----\n"
-mazeList = MazeStringToList(maze)
-nodeList = MakeValidNodes(mazeList)
-graph = ConnectAdjacentNodes(DictConstructor(nodeList))
-
-myGraph = Graph(graph, False)
-
-search = CoordinateBFS(myGraph.GetGraph())
-
-#print(search.SearchGraph((6,1), (6,6)))
-myPen = Turtle()
-x = DrawCoordinateBFS(myGraph.GetGraph())
-x.draw((6,1), (6,6), myPen)
-input()
