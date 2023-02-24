@@ -8,6 +8,7 @@ class DrawCoordinateBFS(CoordinateBFS):
 
     path = {}
     def SearchForPath(self, start: tuple, goal: tuple):
+        self.path = {}
         queue = []
         visited = []
 
