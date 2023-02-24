@@ -4,6 +4,8 @@ from turtle import Turtle
 # How far to draw on the Turtle graphic
 moveDistance = 10
 
+# Functions as a C++ enum, assigns cardinal directions to numbers
+Direction = {"NORTH":1, "EAST":2, "SOUTH":3, "WEST":4}
 
 # Takes the CoordinateBFS class and modifies it to draw the found path
 class DrawCoordinateBFS(CoordinateBFS):

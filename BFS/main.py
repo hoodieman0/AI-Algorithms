@@ -1,7 +1,7 @@
 #Turtle Maze Challenge - www.101computing.net/turtle-maze/
 import turtle
 import maze
-from DrawBFS import DrawCoordinateBFS
+from DrawBFS import DrawCoordinateBFS, Direction
 from Graph import Graph, DictConstructor, GetMazeFromFile, MakeCoordinateNodes, ConnectAdjacentNodes
 
 # Drawing the maze
