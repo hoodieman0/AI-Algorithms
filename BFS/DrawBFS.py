@@ -63,12 +63,7 @@ class DrawCoordinateBFS(CoordinateBFS):
 
     # Assume facing forward into the maze
     # Calls GetPath() and draws the path found using Python Turtle
-    def Draw(self, start: tuple, goal: tuple, pen: Turtle):
-        
-        # Functions as a C++ enum, assigns cardinal directions to numbers
-        Direction = {"NORTH":1, "EAST":2, "SOUTH":3, "WEST":4}
-
-
+    def Draw(self, start: tuple, goal: tuple, facing: int, pen: Turtle):
         # Move the player forward in the pen variable
         def Forward(pen: Turtle):
             pen.forward(moveDistance)
@@ -133,8 +128,6 @@ class DrawCoordinateBFS(CoordinateBFS):
 
         pathList = self.GetPath(start, goal)
         
-        facing = Direction["NORTH"]
-
         prev = pathList[0]
         for move in pathList[1:]:
             facing = Movement(prev, move, facing)

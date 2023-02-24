@@ -29,12 +29,7 @@ myGraph = Graph(graph, False)
 
 search = DrawCoordinateBFS(myGraph.GetGraph())
 print(search.GetPath(start, end))
-search.Draw(start, end, myPen)
+search.Draw(start, end, Direction["NORTH"], myPen)
 
-
+print("~Press Any Button To Exit Program~")
 input()
-
-
-
-
-
