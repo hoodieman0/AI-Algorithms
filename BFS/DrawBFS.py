@@ -60,7 +60,6 @@ class DrawCoordinateBFS(CoordinateBFS):
             x = next[0] - node[0] 
             y = next[1]- node[1] 
             print(str(node) + " -> " + str(next))
-            print(str(x) + " or " + str(y))
 
             if y > 0:
                 change = Direction["NORTH"]
@@ -79,13 +78,19 @@ class DrawCoordinateBFS(CoordinateBFS):
                 return
 
 
-            z = facing - change
+            z = change - facing
             print(str(change) + " - " + str(facing) + " = " + str(z))
             while not z == 0:
-                if z > 0:
+                if z > 2:
+                    z = 0
+                    Left(pen)
+                elif z < -2:
+                    z = 0
+                    Right(pen)
+                elif z > 0:
                     Right(pen)
                     z = z - 1
-                if z < 0:
+                elif z < 0:
                     Left(pen)
                     z = z + 1
                 print(z)
