@@ -42,7 +42,7 @@ class Graph:
         self.graphDict.setdefault(node1, {})[node2] = distance
     
     # For all dict keys, take their connected node and connect that node to the key
-    # Eliminates the need for the input dict to have all possibilities
+    # Eliminates the need for the input dict to have all connection possibilities
     def MakeUndirected(self) -> None:
         for node1 in list(self.graphDict.keys()):
             for (node2, distance) in self.graphDict[node1].items():
@@ -56,16 +56,7 @@ class Graph:
         nodes = s1.union(s2)
         return list(nodes)
 
-    # Returns the connected relationship graph
+    # Returns the connection relationship graph
     def GetGraph(self) -> dict:
         return self.graphDict
-        
-"""
------.-----
--.........-
---.-----.--
--.........-
------.-----
-
-"""
         
