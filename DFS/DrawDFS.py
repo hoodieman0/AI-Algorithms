@@ -25,6 +25,7 @@ class DrawCoordinateDFS(CoordinateDFS):
 
         stack.append(start)
         visited.append(start)
+        self.path.setdefault(start, (-1, -1))
 
         while stack:
             node = stack.pop()
