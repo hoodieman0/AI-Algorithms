@@ -1,4 +1,8 @@
-from abc import ABC #Abstract Base Class
+# Graph.py
+# Author: James Mok
+# Created On: 20 Feb 2023
+
+from abc import ABC # Abstract Base Class
 
 # Helper class to streamline node creation
 class Node(ABC):
