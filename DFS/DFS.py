@@ -1,3 +1,7 @@
+# DFS.py
+# Author: James Mok
+# Created On: 25 Feb 2023
+
 from abc import ABC, abstractmethod
 
 # Depth First Search Base Class
