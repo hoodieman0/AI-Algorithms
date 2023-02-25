@@ -1,10 +1,19 @@
-# **Drawing BFS Path**
-[[Parent GitHub](https://github.com/hoodieman0/AI-Algorithms)] | 
-[[Author GitHub](https://github.com/hoodieman0)]
+<a name="readme-top"></a>
 
-This directory holds the code for the finding a path to solve a given maze.
+<h3 align="center"> <b><u>Drawing BFS Path</u></b> </h3> 
+
+[[Parent GitHub](https://github.com/hoodieman0/AI-Algorithms)] |
+ [[Author GitHub](https://github.com/hoodieman0)]
+
+This directory holds the code for the Breadth First Search algorithm. Given any valid maze, the algorithm will find a path between two points (though not always optimal). 
+
+By creating a graph of nodes from Graph.py, the BFS algorithms can parse the graph and find any possible solution. DrawBFS also has the functionality of graphically displaying the maze and its solution.
 
 The maze.py file and the beginning of main.py was provided by Dr. Mohammad Nassar from the University of New Haven.
+
+See main.py for an example use of the provided classes and functions.
+
+The visual graphics of the maze and DrawBFS.py rely on Turtle graphics.
 
 
 ----------------------------
@@ -33,3 +42,9 @@ Please submit a document file (PDF for example) explaining your approach.
 
 Also submit a self-contained notebook of your solution (ipynb file). 
 ```
+
+<p align="center">[<a href="#readme-top">back to top</a>]</p>
+
+<!---
+Use shields.io for cool headers
+--->
