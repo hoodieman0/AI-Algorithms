@@ -1,7 +1,7 @@
 #Turtle Maze Challenge - www.101computing.net/turtle-maze/
 import turtle
 import maze
-from DrawBFS import DrawCoordinateBFS, Direction
+from DrawDFS import DrawCoordinateDFS, Direction
 from Graph import Graph, DictConstructor, GetMazeFromFile, MakeCoordinateNodes, ConnectAdjacentNodes
 
 # Drawing the maze
@@ -27,7 +27,7 @@ coordList = MakeCoordinateNodes(mazeList)
 graph = ConnectAdjacentNodes(DictConstructor(coordList))
 myGraph = Graph(graph, False)
 
-search = DrawCoordinateBFS(myGraph.GetGraph())
+search = DrawCoordinateDFS(myGraph.GetGraph())
 print(search.GetPath(start, end))
 search.Draw(start, end, Direction["NORTH"], myPen)
 
