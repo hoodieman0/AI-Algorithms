@@ -1,3 +1,7 @@
+# DrawBFS.py
+# Author: James Mok
+# Created On: 22 Feb 2023
+
 from BFS import CoordinateBFS
 from turtle import Turtle
 

@@ -15,6 +15,10 @@ myPen.width(5)
 myPen.left(90)
 
 # ==========================================================
+# main.py
+# Author: James Mok
+# Created On: 20 Feb 2023
+
 # Start of maze movement
 
 filename = "maze.txt"
