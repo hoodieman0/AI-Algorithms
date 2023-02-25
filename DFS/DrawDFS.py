@@ -1,18 +1,21 @@
 from DFS import CoordinateDFS
 from turtle import Turtle
 
+# How far to draw on the Turtle graphic
 moveDistance = 10
 
+# Functions as a C++ enum, assigns cardinal directions to numbers
 Direction = {"NORTH":1, "EAST":2, "SOUTH":3, "WEST":4}
 
 
+# Takes the CoordinateDFS class and modifies it to draw the found path
 class DrawCoordinateDFS(CoordinateDFS):
     # path is of the format: dict{tuple(current node) : tuple(previous node)}
     path = {}
 
-    # Regular BFS search from CoordinateBFS, with the exception
+    # Regular DFS search from CoordinateDFS, with the exception
     # that the path dictionary is updated for each node
-    # Returns true if BFS found a path
+    # Returns true if DFS found a path
     # Returns false if there is not path from start to goal
     # The start of the path is denoted by (-1, -1)
     def SearchForPath(self, start: tuple, goal: tuple) -> bool:
@@ -38,9 +41,9 @@ class DrawCoordinateDFS(CoordinateDFS):
         return False
     
 
-    # Given a starting and end point, get the path BFS took to get to the end
+    # Given a starting and end point, get the path DFS took to get to the end
     # Returns a list where the first element is the start, and successive elements
-    # are next move BFS took
+    # are next move DFS took
     # The start of the path is denoted by (-1, -1)
     def GetPath(self, start: tuple, goal: tuple) -> list:
         self.SearchForPath(start, goal)
@@ -97,7 +100,7 @@ class DrawCoordinateDFS(CoordinateDFS):
                 change = Direction["WEST"]
                 print("MOVING WEST")
             else:
-                print("INVALID NODES -> Movement("+ str(node) + ", " + str(node) + ", " + str(facing) + ") : DrawBFS.py")
+                print("INVALID NODES -> Movement("+ str(node) + ", " + str(node) + ", " + str(facing) + ") : DrawDFS.py")
                 return
 
             turns = change - facing
