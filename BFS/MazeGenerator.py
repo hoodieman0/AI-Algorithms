@@ -1,12 +1,13 @@
 # Adatped from: https://stackoverflow.com/a/51697702
 # User: cdlane
 # Accessed 3 March 2023
-
+# Author: James Mok
+# Created 3 March 2023
 
 import turtle
 from turtle import Turtle
-from Graph import MazeStringTo2DList, GetMazeFromFile
 
+# Sets the size of the maze boundaries
 stamp_size = 20
 scale = 3
 
@@ -18,20 +19,20 @@ Direction = {"NORTH":1, "EAST":2, "SOUTH":3, "WEST":4}
 class MazeGenerator():
     def __init__(self, maze: list) -> None:
         self.maze: list = maze
-
-        # Should I make the maze fixed length? (15x15 makes 40 wall length feasible)        
+     
         self.width =  len(maze[0])
         self.height = len(maze)
 
-        """assert not len(self.maze[0]) % 2 == 0 # Makes sure the maze is odd (has a middle point to center on (0, 0))
-        assert self.wallWidth * len(maze[0]) <= pixelDimensions
-        assert self.wallHeight * len(maze) <= pixelDimensions"""
 
+    # Initializes a Turtle Screen (singleton) to draw a given maze
+    # using the given dimensions
+    # Color is any valid hex string to color the maze boundaries
     def DrawMaze(self, color: str):
         screen = turtle.Screen()
+
+        # Start the screen to use the specific settings of the maze
         screen.setup(self.width * stamp_size * scale, self.height * stamp_size * scale)
         screen.setworldcoordinates(-0.5, -0.5, self.width - 0.5, self.height - 0.5)
-        screen.tracer(0)
 
         shape = turtle.Turtle('square', visible=False)
         shape.shapesize(scale)
@@ -39,19 +40,22 @@ class MazeGenerator():
         shape.penup()
         shape.color(color)
         
+        # If there is a maze boundary in the given square, draw it
         for idxY, line in enumerate(self.maze):
             for idxX, char in enumerate(line):
                 if not char == '.':
                     shape.goto(idxX, idxY)
                     shape.stamp()
         
-        screen.tracer(1)
     
+    # Draws the player on the Turtle Screen and returns a Turtle object of the player sprite
+    # If start is not found return None
     def DrawPlayer(self, start: tuple, color: str) -> Turtle:
         pen = turtle.Turtle()
         pen.hideturtle()
         pen.penup()
 
+        # Searching for the start position
         for idxY, line in enumerate(self.maze):
             for idxX, char in enumerate(line):
                 if (idxX+1, idxY+1) == start and char == '.':

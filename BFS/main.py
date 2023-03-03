@@ -24,9 +24,9 @@ mazeList = GetMazeFromFile(filename)
 
 # Generate maze drawing with player
 
-m = MazeGenerator(mazeList)
-m.DrawMaze(mazeColor)
-myPen = m.DrawPlayer(start, playerColor)
+drawing = MazeGenerator(mazeList)
+drawing.DrawMaze(mazeColor)
+myPen = drawing.DrawPlayer(start, playerColor)
 
 
 # Create Graph
