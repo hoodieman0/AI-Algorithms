@@ -74,7 +74,7 @@ class DrawCoordinateBFS(CoordinateBFS):
     def Draw(self, start: tuple, goal: tuple, facing: int, pen: Turtle):
         # Move the player forward in the pen variable
         def Forward(pen: Turtle):
-            pen.forward(moveDistance)
+            pen.forward(self.moveDistance)
         
 
         # Rotate the player 90 degrees to the right in the pen variable
