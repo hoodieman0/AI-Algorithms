@@ -12,9 +12,9 @@ from MazeGenerator import MazeGenerator
 
 # Global settings
 
-filename = "maze2.txt"
-start = (8, 1)
-end = (8, 15)
+filename = "maze4.txt"
+start = (2, 1)
+end = (5, 9)
 mazeColor = "#00c8ff"
 playerColor = "red"
 
