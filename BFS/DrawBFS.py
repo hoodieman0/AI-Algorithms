@@ -5,8 +5,6 @@
 from BFS import CoordinateBFS
 from turtle import Turtle
 
-# How far to draw on the Turtle graphic
-moveDistance = 10
 
 # Functions as a C++ enum, assigns cardinal directions to numbers
 Direction = {"NORTH":1, "EAST":2, "SOUTH":3, "WEST":4}
@@ -16,6 +14,12 @@ class DrawCoordinateBFS(CoordinateBFS):
 
     # path is of the format: dict{tuple(current node) : tuple(previous node)}
     path = {}
+
+    # How far to draw on the Turtle graphic
+    moveDistance = 1
+
+    def SetMoveDistance(self, distance: int):
+        self.moveDistance = distance
 
     # Regular BFS search from CoordinateBFS, with the exception
     # that the path dictionary is updated for each node
