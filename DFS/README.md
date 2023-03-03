@@ -9,6 +9,8 @@ This directory holds the code for the Dreadth First Search algorithm. Given any 
 
 By creating a graph of nodes from Graph.py, the DFS algorithms can parse the graph and find any possible solution. DrawDFS also has the functionality of graphically displaying the maze and its solution.
 
+MazeGenerator.py draws most given graphs for the users instead of having to hand code each maze. There is an upper limit as to the size of the maze.
+
 The maze.py file and the beginning of main.py was provided by Dr. Mohammad Nassar from the University of New Haven.
 
 See main.py for an example use of the provided classes and functions.
