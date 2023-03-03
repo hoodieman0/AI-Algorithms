@@ -19,7 +19,6 @@ The visual graphics of the maze and DrawBFS.py rely on Turtle graphics.
 ----------------------------
 
 ### Future Features/Fixes:
-* Draw a graphic based on a text file
 * Get valid coordinates from input maze
 
 ----------------------------
